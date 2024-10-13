@@ -9,10 +9,12 @@ export default function SearchComponent() {
   const [query, setQuery] = useState('');
   const [result, setResult] = useState('');
   const [isListening, setIsListening] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = async () => {
+    setIsLoading(true);
     try {
-      const response = await fetch('/api/search', {
+      const response = await fetch('http://localhost:5000/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,6 +26,8 @@ export default function SearchComponent() {
     } catch (error) {
       console.error('Error:', error);
       setResult('An error occurred while searching.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -51,17 +55,22 @@ export default function SearchComponent() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="検索キーワードを入力"
-          className="flex-grow"
+          className="flex-grow w-full py-8 text-lg"
         />
-        <Button onClick={handleVoiceInput} variant="outline">
+        <Button onClick={handleVoiceInput} variant="outline" className="py-8 text-lg">
           <Mic className={isListening ? 'text-red-500' : ''} />
         </Button>
-        <Button onClick={handleSearch}>検索</Button>
+        <Button onClick={handleSearch} className="py-8 text-lg">検索</Button>
       </div>
+      {isLoading && (
+        <div className="text-3xl mt-4 p-4 bg-gray-100 rounded-md">
+          <p>検索中...</p>
+        </div>
+      )}
       {result && (
         <div className="mt-4 p-4 bg-gray-100 rounded-md">
-          <h2 className="text-xl font-semibold mb-2">検索結果:</h2>
-          <p>{result}</p>
+          <h2 className="text-3xl font-semibold mb-2">検索結果:</h2>
+          <p className='text-xl'>{result}</p>
         </div>
       )}
     </div>

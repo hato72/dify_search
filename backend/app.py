@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # 追加
 import requests
 import json
-
+import os
 app = Flask(__name__)
+CORS(app)  # CORSを有効にする
 
-API_KEY = ""  # DifyのAPIキーを入れてください
+API_KEY = os.getenv("NEXT_PUBLIC_DIFY_API_KEY")
 BASE_URL = "https://api.dify.ai/v1"
 
 def run_workflow(inputs, response_mode, user):
