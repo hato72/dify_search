@@ -9,8 +9,7 @@ COPY backend/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # アプリケーションコードをコピー
-
-COPY . .
+COPY ./backend ./backend
 
 # アプリケーションを実行
-CMD ["python", "app.py"]
+CMD ["python", "backend/app.py"]
