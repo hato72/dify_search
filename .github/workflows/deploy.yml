@@ -18,7 +18,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t dify_backend .
+          docker build -t dify_backend -f backend/Dockerfile .
 
       - name: Push Docker image
         run: |
