@@ -1,15 +1,25 @@
 # dify_search
-
+## frontend
 https://dify-search.vercel.app/
 
 ## backend
 docker compose up -d 
 
-#### memo
+## memo
 ```sh
 vercel login
 vercel link
-vercel/vercel.jsonにgitのbranch名を指定しvercelデプロイを制御
-
+```
+```
+vercel.json
+{
+    "git": {
+      "deploymentEnabled": {
+        "my-branch-name": false
+      }
+    }
+}
+```
+```
 .envにNEXT_PUBLIC_DIFY_API_KEYを設定
 ```
