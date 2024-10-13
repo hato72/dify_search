@@ -5,7 +5,7 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # 依存関係をインストール
-COPY requirements.txt ./
+COPY backend/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # アプリケーションコードをコピー
