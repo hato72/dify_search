@@ -3,8 +3,13 @@
 https://dify-search.vercel.app/
 
 ## backend
-docker compose up -d 
+cloud run
 
+#### ローカルでバックエンドサーバーを立ち上げる場合
+```
+NEXT_PUBLIC_BACKEND_URLにhttp://localhost:8080を指定して以下を実行
+docker compose up -d 
+```
 ## memo
 ```sh
 vercel login
@@ -22,4 +27,5 @@ vercel.json
 ```
 ```
 .envにNEXT_PUBLIC_DIFY_API_KEYを設定
+.envにNEXT_PUBLIC_BACKEND_URL(cloud run url)を設定
 ```
