@@ -12,6 +12,7 @@ docker compose up -d
 ```
 ## memo
 ```sh
+npm i -g vercel
 vercel login
 vercel link
 ```
